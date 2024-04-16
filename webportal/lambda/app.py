@@ -45,6 +45,7 @@ TABLENAME_MANAGE_DISK = os.getenv("TABLENAME_MANAGE_DISK")
 TABLENAME_MANAGE_DISK_INDEX = os.getenv("TABLENAME_MANAGE_DISK_INDEX")
 TABLENAME_MANAGE_UPTIME = os.getenv("TABLENAME_MANAGE_UPTIME")
 TABLENAME_MANAGE_UPTIME_INDEX = os.getenv("TABLENAME_MANAGE_UPTIME_INDEX")
+TABLENAME_USER_UPLOADED_PII_CBI = "dev-UserUploadedPIICBIAuthorityRecordsTable"
 
 authorizer = CognitoUserPoolAuthorizer(COGNITO_USER_POOL, provider_arns=[PROVIDER_ARNS])
 time_lst = []
@@ -1806,3 +1807,14 @@ def get_health():
                     status_code=200,
                     headers={'Content-Type': 'application/json'})
 
+@app.route('/register_pii_cbi', methods=['POST'], authorizer=authorizer, cors=cors_config)
+def register_file_as_pii_cbi():
+    # Incoming Data
+    request = app.current_request
+    data = request.json_body
+    data['UploadId'] = str(uuid.uuid4())
+    # Save Data to DynamoDB
+    table = dynamodb_client.Table(TABLENAME_USER_UPLOADED_PII_CBI)
+    table.put_item(Item=data)
+    # Return Success
+    return { 'success': True }

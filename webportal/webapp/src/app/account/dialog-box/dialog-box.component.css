@@ -5,34 +5,43 @@
   /*width: 30%;*/
   font-size: 11px;
 }
+
 .mat-mdc-dialog-container {
   border: solid 2px #0b264db8 !important;
 }
+
 mat_tab_style {
   height: 451px;
 }
+
 /*TODO(mdc-migration): The following rule targets internal classes of tabs that may no longer apply for the MDC version.*/
 ::ng-deep .mat-tab-body-content {
   overflow: hidden !important;
 }
+
 ::ng-deep .mat-mdc-dialog-content {
   max-height: 200vh !important;
 }
+
 .mat-mdc-dialog-actions {
   display: block !important;
 }
+
 .request-exportCancelBtn {
   float: left;
   margin-left: 7px;
 }
+
 .request-exportNextBtn {
   float: right;
   margin-left: 7px;
 }
+
 .request-exportPreviousBtn {
   float: right;
   margin-right: 7px;
 }
+
 .request-exportSubmitBtn {
   float: right;
   margin-left: 7px;
@@ -156,4 +165,113 @@ mat_tab_style {
 
 ::ng-deep .ui-chkbox {
   vertical-align: top;
+}
+
+::ng-deep .p-fileupload .p-fileupload-content {
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+::ng-deep .p-fileupload .p-fileupload-buttonbar {
+  padding: 1rem;
+}
+
+::ng-deep .p-fileupload .p-fileupload-buttonbar .p-button {
+  padding: .375rem .75rem;
+  border-radius: 3px;
+}
+
+span.p-ripple.p-element.p-button.p-component.p-fileupload-choose {
+  padding: 6px 8px !important;
+}
+
+div.upload-form {}
+
+div.upload-form div.elem-location {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+div.upload-form div.elem-location label {}
+
+div.upload-form div.elem-location select {
+  width: 100%;
+  height: 38px;
+  border: solid 1px #cecece;
+  border-radius: 3px;
+  padding: 4px 6px;
+}
+
+div.upload-form div.elem-prefix {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+div.upload-form div.elem-prefix label {}
+
+div.upload-form div.elem-prefix input {
+  width: 100%;
+  height: 38px;
+  border: solid 1px #cecece;
+  border-radius: 3px;
+  padding: 4px 6px;
+}
+
+div.upload-form div.upload-wrapper {
+  padding-top: 1rem;
+}
+
+
+
+.upload-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.25rem;
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: solid 1px #cecece;
+}
+
+.upload-item:last-of-type {
+  padding-bottom: 4px;
+  border-bottom: none;
+}
+
+.upload-item div.file_name {
+  flex-grow: 1;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+
+.upload-item div.file_size {
+  flex-shrink: 1;
+  white-space: nowrap;
+  user-select: none;
+  text-align: right;
+}
+
+.upload-item div.actions {
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.upload-item div.actions div.switch {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.upload-item div.actions div.switch label {
+  white-space: nowrap;
 }

@@ -1,19 +1,8 @@
 import { Component, Inject, OnInit, ViewChild } from "@angular/core"; //child to parent data sharing via ViewChild
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpRequest,
-  HttpEventType,
-  HttpResponse,
-} from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpRequest, HttpEventType, HttpResponse, } from "@angular/common/http";
 import { FileUpload, FileUploadModule } from "primeng/fileupload";
 //import { MAT_DIALOG_DATA, MatDialogRef, MatTooltipModule, MatSnackBar, MatDatepicker, MatRadioModule, MatCheckboxModule, MatTabsModule } from '@angular/material';
-import {
-  MatDialogModule,
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-  MatDialog,
-} from "@angular/material/dialog";
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MatDialog, } from "@angular/material/dialog";
 //import {MatTooltipModule} from '@angular/material/tooltip'
 import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
 //import { MatRadioModule } , from '@angular/material/radio';
@@ -33,10 +22,7 @@ import { MatFormFieldModule, MatHint } from "@angular/material/form-field";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSelectModule } from "@angular/material/select";
 import { MatTabsModule } from "@angular/material/tabs";
-import {
-  MatExpansionModule,
-  MatExpansionPanel,
-} from "@angular/material/expansion";
+import { MatExpansionModule, MatExpansionPanel, } from "@angular/material/expansion";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatCardModule } from "@angular/material/card";
@@ -45,11 +31,7 @@ import { CardModule } from "primeng/card";
 import { ButtonModule } from "primeng/button";
 import { MatIconModule } from "@angular/material/icon";
 import { DatasetsComponent } from "../datasets/datasets.component";
-import {
-  MatCommonModule,
-  MatLineModule,
-  MatNativeDateModule,
-} from "@angular/material/core";
+import { MatCommonModule, MatLineModule, MatNativeDateModule, } from "@angular/material/core";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
@@ -60,6 +42,8 @@ import { CdkTableModule } from "@angular/cdk/table";
 import { TableModule } from "primeng/table";
 import { PanelModule } from "primeng/panel";
 import { RadioButtonModule } from "primeng/radiobutton";
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { Subscription } from "rxjs";
 
 @Component({
   standalone: true,
@@ -67,6 +51,7 @@ import { RadioButtonModule } from "primeng/radiobutton";
     CommonModule,
     CdkTableModule,
     RadioButtonModule,
+    InputSwitchModule,
     TableModule,
     FileUploadModule,
     InputTextModule,
@@ -164,15 +149,9 @@ export class DialogBoxComponent implements OnInit {
 
   diskSizeChange = true;
   cpuOptions = [2, 4, 8, 16, 24, 36, 40, 48, 60, 64, 72, 96, 128];
-  memoryOptions = [
-    2, 3.75, 4, 5.25, 7.5, 8, 10.5, 15, 15.25, 16, 21, 30, 30.5, 32, 42, 61, 64,
-    72, 96, 128, 144, 160, 192, 256, 384, 768,
-  ];
+  memoryOptions = [2, 3.75, 4, 5.25, 7.5, 8, 10.5, 15, 15.25, 16, 21, 30, 30.5, 32, 42, 61, 64, 72, 96, 128, 144, 160, 192, 256, 384, 768,];
   // eslint-disable-next-line max-len
-  additionalDiskSizeOptions = [
-    2, 3.75, 4, 5.25, 7.5, 8, 10.5, 15, 15.25, 16, 21, 30, 30.5, 32, 42, 61, 64,
-    72, 96, 128, 144, 160, 192, 256, 384, 768,
-  ];
+  additionalDiskSizeOptions = [2, 3.75, 4, 5.25, 7.5, 8, 10.5, 15, 15.25, 16, 21, 30, 30.5, 32, 42, 61, 64, 72, 96, 128, 144, 160, 192, 256, 384, 768,];
   operatingSystem: string;
   defaultInstanceType: string;
   instanceId: string;
@@ -322,9 +301,7 @@ export class DialogBoxComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(
-      "constructor this.edgePrivateDatabase:" + this.edgePrivateDatabase
-    );
+    console.log("constructor this.edgePrivateDatabase:" + this.edgePrivateDatabase);
 
     this.userEmail = sessionStorage.getItem("email");
     this.userName = sessionStorage.getItem("username");
@@ -438,6 +415,8 @@ export class DialogBoxComponent implements OnInit {
     return str === null || str.trim() === "";
   }
 
+  public selectedLocation: any;
+
   hasSubMenuItems(selectedLocation: string): boolean {
     // Use the selectedLocation to determine if there are sub-menu items
     // Return true if there are items, or false if there are none
@@ -536,7 +515,7 @@ export class DialogBoxComponent implements OnInit {
     if (
       this.mailType === "Access Request Mail" &&
       this.datasetName !==
-        "U.S DOT Connected Vehicle Pilot (CVP) Evaluation Datasets"
+      "U.S DOT Connected Vehicle Pilot (CVP) Evaluation Datasets"
     ) {
       this.message =
         "<div>" +
@@ -750,7 +729,7 @@ export class DialogBoxComponent implements OnInit {
   handlePricingSelection(instanceFamilyIndex, pricingGroupsIndex) {
     this.requestedInstanceType =
       this.pricingGroups[instanceFamilyIndex][pricingGroupsIndex][
-        "instanceType"
+      "instanceType"
       ];
     this.vcpu =
       this.pricingGroups[instanceFamilyIndex][pricingGroupsIndex]["vcpu"];
@@ -880,7 +859,7 @@ export class DialogBoxComponent implements OnInit {
     this.gatewayService
       .modifyUserWorkstation(
         "manage_user_workstation?wsrequest=" +
-          encodeURI(JSON.stringify(message))
+        encodeURI(JSON.stringify(message))
       )
       .subscribe(
         (response: any) => {
@@ -938,7 +917,7 @@ export class DialogBoxComponent implements OnInit {
     this.gatewayService
       .get(
         "get_workstation_schedule?wsrequest=" +
-          encodeURI(JSON.stringify(message))
+        encodeURI(JSON.stringify(message))
       )
       .subscribe(
         // this.gatewayService.get('get_workstation_schedule?username=' + this.userName).subscribe(
@@ -980,11 +959,11 @@ export class DialogBoxComponent implements OnInit {
     this.gatewayService
       .getDesiredInstanceTypesAndCosts(
         "get_desired_instance_types?cpu=" +
-          this.selectedCpu +
-          "&memory=" +
-          this.selectedMemory +
-          "&os=" +
-          this.operatingSystem
+        this.selectedCpu +
+        "&memory=" +
+        this.selectedMemory +
+        "&os=" +
+        this.operatingSystem
       )
       .subscribe((response: any) => {
         console.log(response);
@@ -1358,44 +1337,68 @@ export class DialogBoxComponent implements OnInit {
     this.uploadNotice = true;
   }
 
+  public selected_files: Array<any> = [];
+
+  public selectFiles(select_event: any): void {
+    const { currentFiles } = select_event;
+    console.log(currentFiles);
+    this.selected_files = currentFiles;
+  }
+
+  public genFileId(): string { return `${Date.now() + Math.floor(Math.random() * 100)}`; }
+
+  public removeFile(file: File, uploader: FileUpload): void {
+    const index = uploader.files.indexOf(file);
+    uploader.remove(null, index);
+  }
+
+  public clearFiles(clear_event: any): void {
+    console.log(clear_event);
+    this.selected_files = [];
+  }
+
+  public humanFileSize(bytes: number, si = false, dp = 1): string {
+    const thresh = si ? 1000 : 1024;
+    if (Math.abs(bytes) < thresh) { return bytes + ' B'; }
+    const units = si ? ['kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] : ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
+    let u = -1;
+    const r = 10 ** dp;
+    do { bytes /= thresh; ++u; } while (Math.round(Math.abs(bytes) * r) / r >= thresh && u < units.length - 1);
+    return bytes.toFixed(dp) + ' ' + units[u];
+  }
+
   uploadFiles(event1, location: string) {
     const totalFilesCount = event1.files.length;
     console.log("location = " + location);
     for (const file of event1.files) {
+      console.log("==============================");
       console.log("Bucket name is = " + location);
       console.log("File name is = " + file.name);
       console.log("File type is = " + file.type);
+
+
+
       this.gatewayService
-        .getPresignedUrl(
-          "presigned_url?file_name=" +
-            file.name +
-            "&file_type=" +
-            file.type +
-            "&bucket_name=" +
-            location +
-            "&username=" +
-            this.userName
-        )
+        .getPresignedUrl("presigned_url?file_name=" + file.name + "&file_type=" + file.type + "&bucket_name=" + location + "&username=" + this.userName)
         .subscribe((response: any) => {
-          const req = new HttpRequest("PUT", response, file, {
-            reportProgress: true,
-            headers: new HttpHeaders().set("Content-Type", file.type),
-          });
+
+          const req = new HttpRequest("PUT", response, file, { reportProgress: true, headers: new HttpHeaders().set("Content-Type", file.type), });
+
           console.log("req == ", req);
           console.log("HAS PRESIGNED URL");
+
           this.http.request(req).subscribe((event) => {
             console.log("in http.request");
             // Via this API, you get access to the raw event stream.
             // Look for upload progress events.
             if (event.type === HttpEventType.UploadProgress) {
               // This is an upload progress event. Compute and show the % done:
-              const percentDone = Math.round(
-                (100 * event.loaded) / event.total
-              );
+              const percentDone = Math.round((100 * event.loaded) / event.total);
               this.fileUpload.progress = percentDone;
               console.log("File is ${percentDone}% uploaded.", percentDone);
             } else if (event instanceof HttpResponse) {
               console.log("in if");
+
               //this.selectedFiles.push(file);
               event1.files.forEach((file1, index) => {
                 console.log("File1 = ", file1, " index = ", index);
@@ -1404,17 +1407,25 @@ export class DialogBoxComponent implements OnInit {
                   this.fileUpload.remove(event1.files, index);
                 }
               });
+
               console.log("Past for");
+
+              if (file.contains_confidential == true) {
+                console.log("File has confidential information = " + file.contains_confidential);        
+                let payload = { UserName: this.userName, authority_granted: true, file_name: file.name, file_type: file.type, upload_location: location };
+                console.log("Confidential File Payload = ", payload);        
+                const register_authority: Subscription = this.gatewayService.registerConfidentialDocumentAuthority(payload).subscribe((response: any) => {
+                  console.log("Register Authority Response: ", response);
+                  register_authority.unsubscribe();
+                });        
+              }
+              console.log("Past confidential");
+
               this.uploadedFilesCount++;
               console.log("File is completely uploaded!");
+
               if (this.uploadedFilesCount === totalFilesCount) {
-                this.snackBar.open(
-                  "Your file(s) has been uploaded successfully",
-                  "close",
-                  {
-                    duration: 2000,
-                  }
-                );
+                this.snackBar.open("Your file(s) has been uploaded successfully", "close", { duration: 2000, });
                 this.uploadNotice = false;
                 this.onNoClick();
               }

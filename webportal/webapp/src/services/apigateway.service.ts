@@ -14,7 +14,7 @@ import { switchMap, tap } from "rxjs/operators";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private cognitoService: CognitoService) {}
+  constructor(private cognitoService: CognitoService) { }
 
   intercept(
     request: HttpRequest<any>,
@@ -156,5 +156,9 @@ export class ApiGatewayService {
     return this.http
       .get(ApiGatewayService._API_ENDPOINT + url)
       .pipe(map(this.extractData), catchError(this.handleError));
+  }
+
+  public registerConfidentialDocumentAuthority(payload: any): Observable<any> {
+    return this.http.post(ApiGatewayService._API_ENDPOINT + 'register_pii_cbi', payload)
   }
 }
