@@ -158,7 +158,10 @@ export class ApiGatewayService {
       .pipe(map(this.extractData), catchError(this.handleError));
   }
 
-  public registerConfidentialDocumentAuthority(payload: any): Observable<any> {
-    return this.http.post(ApiGatewayService._API_ENDPOINT + 'register_pii_cbi', payload)
+  registerConfidentialDocumentAuthority(payload: any) {
+    const url = 'register_pii_cbi';
+    return this.http
+      .post(ApiGatewayService._API_ENDPOINT + url, payload)
+      .pipe(map(this.extractData), catchError(this.handleError));
   }
 }
