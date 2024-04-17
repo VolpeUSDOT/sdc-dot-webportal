@@ -1812,9 +1812,17 @@ def register_file_as_pii_cbi():
     # Incoming Data
     request = app.current_request
     data = request.json_body
-    data['UploadId'] = str(uuid.uuid4())
+    # data['UploadId'] = str(uuid.uuid4())
     # Save Data to DynamoDB
     table = dynamodb_client.Table(TABLENAME_USER_UPLOADED_PII_CBI)
-    table.put_item(Item=data)
+    Item = {
+        'UploadId': str(uuid.uuid4()),
+        'UserName': data.UserName, 
+        'authority_granted': data.authority_granted, 
+        'file_name': data.file_name,
+        'file_type': data.file_type,
+        'upload_location':data.upload_location
+    }
+    table.put_item(Item)
     # Return Success
     return { 'success': True }
