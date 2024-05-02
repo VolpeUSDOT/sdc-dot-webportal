@@ -519,12 +519,12 @@
             matInput
             title="e.g. Aggregated Jam Couasnts, Virginia Alerts in 2020, etc."
             placeholder="Address"
-            [(ngModel)]="messageModel.derivedDatasetname"
-            value="{{ messageModel.derivedDatasetname }}"
+            [(ngModel)]="messageModel.address"
+            value="{{ messageModel.address }}"
             required
           />
 
-          <mat-error align="end" *ngIf="!messageModel.derivedDatasetname"
+          <mat-error align="end" *ngIf="!messageModel.address"
             >Required</mat-error
           >
         </mat-form-field>
@@ -533,26 +533,24 @@
             matInput
             title="e.g. Aggregated Jam Cwounts, Virgindia Alerts in 2020, etc."
             placeholder="City"
-            [(ngModel)]="messageModel.derivedDatasetname"
-            value="{{ messageModel.derivedDatasetname }}"
+            [(ngModel)]="messageModel.city"
+            value="{{ messageModel.city }}"
             required
           />
 
-          <mat-error align="end" *ngIf="!messageModel.derivedDatasetname"
-            >Required</mat-error
-          >
+          <mat-error align="end" *ngIf="!messageModel.city">Required</mat-error>
         </mat-form-field>
         <mat-form-field style="width: 100%">
           <input
             matInput
             title="e.g. Aggregated Jam Counts, Virginia Alerts in 2020,d etc."
             placeholder="State"
-            [(ngModel)]="messageModel.derivedDatasetname"
-            value="{{ messageModel.derivedDatasetname }}"
+            [(ngModel)]="messageModel.state"
+            value="{{ messageModel.state }}"
             required
           />
 
-          <mat-error align="end" *ngIf="!messageModel.derivedDatasetname"
+          <mat-error align="end" *ngIf="!messageModel.state"
             >Required</mat-error
           >
         </mat-form-field>
@@ -561,12 +559,12 @@
             matInput
             title="e.g. Aggregated Jam Counts, Virginiaa Alerts in 2020, etc."
             placeholder="Zipcode"
-            [(ngModel)]="messageModel.derivedDatasetname"
-            value="{{ messageModel.derivedDatasetname }}"
+            [(ngModel)]="messageModel.zipcode"
+            value="{{ messageModel.zipcode }}"
             required
           />
 
-          <mat-error align="end" *ngIf="!messageModel.derivedDatasetname"
+          <mat-error align="end" *ngIf="!messageModel.zipcode"
             >Required</mat-error
           >
         </mat-form-field>
@@ -576,12 +574,12 @@
             matInput
             title="e.g. Waze jams aggregated and counted in 2022, Average number of Waze alerts per day in Virginia in 2020, etc."
             placeholder="Email"
-            [(ngModel)]="messageModel.detailedderiveddataset"
-            value="{{ messageModel.detailedderiveddataset }}"
+            [(ngModel)]="messageModel.email"
+            value="{{ messageModel.email }}"
             required
           />
 
-          <mat-error align="end" *ngIf="!messageModel.detailedderiveddataset"
+          <mat-error align="end" *ngIf="!messageModel.email"
             >Required</mat-error
           >
         </mat-form-field>
@@ -698,11 +696,16 @@
           >
             CANCEL
           </button>
+
           <button
             class="btn btn-primary dotBtn request-exportSubmitBtn"
             [disabled]="
               !messageModel.derivedDatasetname ||
-              !messageModel.detailedderiveddataset ||
+              !messageModel.address ||
+              !messageModel.city ||
+              !messageModel.state ||
+              !messageModel.zipcode ||
+              !messageModel.email ||
               !messageModel.datasources ||
               !messageModel.justifyExport ||
               !acceptableUse
