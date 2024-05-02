@@ -4,6 +4,10 @@
 
 ​To deploy this release, select this version's tag and follow the instructions in the [Deployment Plan](plans/deployment.md).
 
+## 3.1.9 (2024-03-22)
+
+- HOTFIX: Fixed export request error so boxes all populate independently
+
 ## 3.1.8 (2024-03-22)
 
 - Fixed inactivity timer to notify users using a different function type due to DOT Admins blocking notifications on Chrome
