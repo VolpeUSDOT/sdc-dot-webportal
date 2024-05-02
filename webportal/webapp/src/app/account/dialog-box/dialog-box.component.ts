@@ -152,6 +152,11 @@ export class DialogBoxComponent implements OnInit {
   dataSources: string;
   detailedDerivedDataset: string;
   derivedDataSetName: string;
+  address: string;
+  city: string;
+  state: string;
+  zipcode: string;
+  email: string;
   trustedAcceptableUseDisabled: boolean;
   edgePrivateDatabase: string;
   edgePrivateTable: string;
@@ -258,6 +263,11 @@ export class DialogBoxComponent implements OnInit {
     // tags: '',
     justifyExport: "",
     derivedDatasetname: "",
+    address: "",
+    city: "",
+    state: "",
+    zipcode: "",
+    email: "",
     dataprovider: "",
     datatype: "",
     autoderiveddataset: "",
@@ -1175,6 +1185,11 @@ export class DialogBoxComponent implements OnInit {
     this.selectedDataProvider = this.messageModel.dataProviderName;
     this.selectedDatatype = this.messageModel.subDataSet;
     this.derivedDataSetName = this.messageModel.derivedDatasetname;
+    this.address = this.messageModel.address;
+    this.city = this.messageModel.city;
+    this.state = this.messageModel.state;
+    this.zipcode = this.messageModel.zipcode;
+    this.email = this.messageModel.email;
     this.detailedDerivedDataset = this.messageModel.detailedderiveddataset;
     this.dataType = this.messageModel.datatype;
     this.dataSources = this.messageModel.datasources;
@@ -1211,6 +1226,21 @@ export class DialogBoxComponent implements OnInit {
     }
     if (this.derivedDataSetName) {
       approvalForm["derivedDataSetname"] = this.derivedDataSetName;
+    }
+    if (this.address) {
+      approvalForm["address"] = this.address;
+    }
+    if (this.city) {
+      approvalForm["city"] = this.city;
+    }
+    if (this.state) {
+      approvalForm["state"] = this.state;
+    }
+    if (this.zipcode) {
+      approvalForm["zipcode"] = this.zipcode;
+    }
+    if (this.email) {
+      approvalForm["email"] = this.email;
     }
     if (this.detailedDerivedDataset) {
       approvalForm["detailedderiveddataset"] = this.detailedDerivedDataset;
